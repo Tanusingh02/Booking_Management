@@ -9,14 +9,12 @@ var bookingschema=new mongoose.Schema({
       checkin:Date,
       checkout:Date,
       no_of_days:Number,
-      booking_date:Date.now,
+      booking_date:
+      {type:Date,default:Date.now}, // Changed to use Date.now as default
       city:String,
       booking_id:Number
 })
-bookingschema.plugin(AutoIncrement,
-    {
-        inc_field:'booking_id'
-    });
+
 var bookingmodel=mongoose.model("booking",bookingschema);
 
 module.exports=bookingmodel;
